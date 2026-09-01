@@ -1,12 +1,14 @@
 # 📈 Sales Forecasting System
 
-A data science and machine learning project that analyzes historical sales data and predicts future sales using time-based features and Random Forest Regression.
+A data science and machine learning project that analyzes historical retail sales data and predicts future sales using time-based features and a **Random Forest Regressor**.
+
+The project also includes an interactive **Streamlit web application** for generating and visualizing future sales forecasts.
 
 ## 🎯 Project Objective
 
-Businesses need accurate sales forecasts to support inventory management, revenue planning, and business decision-making.
+Businesses need reliable sales forecasts to support inventory management, revenue planning, and business decision-making.
 
-This project analyzes historical sales patterns and builds a machine learning model to forecast future sales based on historical information.
+This project analyzes historical sales patterns, aggregates sales data on a daily basis, and builds a machine learning model to forecast future sales based on time-based features.
 
 ## 📂 Dataset
 
@@ -14,14 +16,14 @@ The project uses a retail sales dataset containing historical sales information 
 
 The dataset includes information such as:
 
-- Date
-- Store
-- Product family
-- Sales
-- Transactions
-- Store information
-- Holidays and events
-- Oil prices
+* Date
+* Store
+* Product Family
+* Sales
+* Transactions
+* Store Information
+* Holidays and Events
+* Oil Prices
 
 The training dataset contains approximately **3 million records** covering the period from **2013 to 2017**.
 
@@ -30,93 +32,124 @@ The training dataset contains approximately **3 million records** covering the p
 1. Data Collection
 2. Data Cleaning
 3. Exploratory Data Analysis
-4. Data Aggregation
+4. Daily Sales Aggregation
 5. Feature Engineering
-6. Train-Test Split
+6. Chronological Train-Test Split
 7. Model Training
 8. Model Evaluation
 9. Future Sales Forecasting
+10. Streamlit Web Application
 
 ## 📊 Exploratory Data Analysis
 
-The project analyzes:
+The project analyzes historical sales patterns through visualizations including:
 
-- Sales trends over time
-- Yearly and monthly sales patterns
-- Daily sales patterns
-- Store-level sales
-- Product-family sales
-- Seasonal behavior
+* Daily sales trends
+* Monthly sales patterns
+* Seasonal sales behavior
+* Yearly sales patterns
+* Historical sales fluctuations
 
-Visualizations were created using Matplotlib to understand historical sales patterns.
+Visualizations were created using **Matplotlib** and **Seaborn** to better understand the behavior of sales over time.
 
 ## ⚙️ Feature Engineering
 
-Several time-based and historical sales features were created:
+The forecasting model uses the following time-based features:
 
-- Year
-- Month
-- Day
-- Day of Week
-- Week of Year
-- Lag 1
-- Lag 7
-- Lag 30
+* **Year**
+* **Month**
+* **Day**
+* **Day of Week**
+* **Week of Year**
 
-Lag features allow the model to use previous sales information when making predictions.
+These features allow the model to identify patterns related to different dates, months, weekdays, and weeks of the year.
 
 ## 🤖 Machine Learning Model
 
-A **Random Forest Regressor** was used to predict sales.
+A **Random Forest Regressor** was used to predict daily sales.
 
-The data was divided chronologically into training and testing sets to avoid using future information when training the model.
+Model configuration:
+
+* `n_estimators = 100`
+* `random_state = 42`
+* `n_jobs = -1`
+
+The data was divided chronologically into training and testing sets to preserve the time-based nature of the forecasting problem.
 
 ### Training Period
 
-2013-01-31 to 2016-09-17
+**2013-01-31 to 2016-09-17**
 
 ### Testing Period
 
-2016-09-18 to 2017-08-15
+**2016-09-18 to 2017-08-15**
 
 ## 📏 Model Evaluation
 
 The model was evaluated using:
 
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
+* Mean Absolute Error (MAE)
+* Root Mean Squared Error (RMSE)
 
 ### Results
 
-| Metric | Result |
-|---|---:|
-| MAE | 85,072.90 |
-| RMSE | 134,979.14 |
-| Average Actual Sales | 850,957.98 |
-| MAE as % of Average Sales | 10.00% |
+| Metric                    |     Result |
+| ------------------------- | ---------: |
+| MAE                       |  85,072.90 |
+| RMSE                      | 134,979.14 |
+| Average Actual Sales      | 850,957.98 |
+| MAE as % of Average Sales |     10.00% |
 
 The model achieved an MAE equivalent to approximately **10% of the average daily sales**, providing a useful baseline for sales forecasting.
 
 ## 🔮 Future Sales Forecast
 
-The trained model was used to generate a **30-day future sales forecast**.
+After evaluation, a final Random Forest model was trained using all available historical data.
 
-| Forecast Metric | Value |
-|---|---:|
-| Average Predicted Daily Sales | 823,747.05 |
-| Highest Predicted Daily Sales | 1,173,482.16 |
-| Lowest Predicted Daily Sales | 649,985.15 |
-| Total Predicted Sales | 24,712,411.46 |
+The model was then used to generate a **30-day future sales forecast**.
+
+### 30-Day Forecast Results
+
+| Forecast Metric               |         Value |
+| ----------------------------- | ------------: |
+| Average Predicted Daily Sales |    823,747.05 |
+| Highest Predicted Daily Sales |  1,173,482.16 |
+| Lowest Predicted Daily Sales  |    649,985.15 |
+| Total Predicted Sales         | 24,712,411.46 |
+
+## 🌐 Streamlit Web Application
+
+The project includes an interactive Streamlit application that allows users to generate future sales forecasts without running the complete Jupyter Notebook.
+
+### Application Features
+
+* 📊 Historical sales visualization
+* 🔮 7-day, 14-day, and 30-day forecasting
+* 📈 Future sales forecast visualization
+* 📌 Forecast summary metrics
+* 📋 Detailed forecast table
+* ⬇️ Downloadable forecast CSV file
+
+## 🚀 Live Demo
+
+The live Streamlit application will be available here:
+
+**[Sales Forecasting System – Live App](YOUR_STREAMLIT_APP_URL)**
+
+> Replace `YOUR_STREAMLIT_APP_URL` with the Streamlit URL after deployment.
 
 ## 🛠️ Technologies Used
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Scikit-learn
-- Google Colab
-- Jupyter Notebook
+* Python
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-learn
+* Joblib
+* Streamlit
+* Google Colab
+* Jupyter Notebook
 
 ## 📁 Project Structure
 
@@ -124,4 +157,47 @@ The trained model was used to generate a **30-day future sales forecast**.
 Sales-Forecasting-System/
 │
 ├── Sales_Forecasting_System.ipynb
-└── README.md
+├── README.md
+├── train.csv.zip
+├── app.py
+├── daily_sales.csv
+├── sales_forecasting_model.pkl
+└── requirements.txt
+```
+
+## ▶️ Run the Streamlit App Locally
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd Sales-Forecasting-System
+```
+
+### 3. Install the required libraries
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Run the Streamlit application
+
+```bash
+streamlit run app.py
+```
+
+The application will open in your browser.
+
+## 📌 Key Outcome
+
+This project demonstrates an end-to-end machine learning workflow for sales forecasting, including:
+
+**Data Analysis → Feature Engineering → Model Training → Evaluation → Future Forecasting → Interactive Deployment**
+
+The Streamlit application makes the trained forecasting model accessible through a simple and user-friendly interface.
+
