@@ -2,6 +2,11 @@
 
 A sales forecasting system that analyzes historical retail sales data, identifies time-based patterns, and predicts future sales using a Random Forest Regressor — with an interactive Streamlit dashboard for generating and visualizing forecasts.
 
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Scikit--learn](https://img.shields.io/badge/Scikit--learn-ML-orange.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+
 🔗 **Live demo:** (https://sales-forecasting-system-bpecypj3gmrkmjphvrjqvk.streamlit.app/)
 
 ---
