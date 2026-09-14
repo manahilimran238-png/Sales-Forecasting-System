@@ -1,114 +1,133 @@
 # 📈 Sales Forecasting System
 
-A data science and machine learning project that analyzes historical retail sales data and predicts future sales using time-based features and a **Random Forest Regressor**.
+A sales forecasting system that analyzes historical retail sales data, identifies time-based patterns, and predicts future sales using a Random Forest Regressor — with an interactive Streamlit dashboard for generating and visualizing forecasts.
 
-The project also includes an interactive **Streamlit web application** for generating and visualizing future sales forecasts.
+🔗 **Live demo:** (https://sales-forecasting-system-bpecypj3gmrkmjphvrjqvk.streamlit.app/)
 
-## 🎯 Project Objective
+---
 
-Businesses need reliable sales forecasts to support inventory management, revenue planning, and business decision-making.
+## 📌 Overview
 
-This project analyzes historical sales patterns, aggregates sales data on a daily basis, and builds a machine learning model to forecast future sales based on time-based features.
+Businesses need reliable sales forecasts to support inventory planning, revenue estimation, and data-driven decision-making. This project analyzes historical retail sales, aggregates sales on a daily basis, extracts time-based features, and builds a forecasting model to estimate future sales.
 
-## 📂 Dataset
+The project also includes an interactive Streamlit application where users can explore historical sales and generate forecasts for different time horizons.
 
-The project uses a retail sales dataset containing historical sales information for multiple stores and product families.
+## ✨ Features
 
-The dataset includes information such as:
+* **Exploratory Data Analysis** — analyzes daily, monthly, yearly, and seasonal sales patterns
+* **Data Preparation** — cleans and prepares historical retail sales data for forecasting
+* **Daily Sales Aggregation** — converts transaction-level sales into daily sales totals
+* **Time-Based Feature Engineering** — extracts year, month, day, day of week, and week of year
+* **Random Forest Forecasting** — trains a Random Forest Regressor to predict daily sales
+* **Chronological Train-Test Split** — preserves the time-based structure of the forecasting problem
+* **Model Evaluation** — evaluates predictions using MAE and RMSE
+* **Future Forecasting** — generates 7-day, 14-day, and 30-day sales forecasts
+* **Forecast Visualization** — displays historical and predicted sales trends
+* **Forecast Summary** — provides average, highest, lowest, and total predicted sales
+* **CSV Export** — allows forecast results to be downloaded for further analysis
+* **Interactive Streamlit App** — provides a simple interface for exploring data and generating forecasts
 
-* Date
-* Store
-* Product Family
-* Sales
-* Transactions
-* Store Information
-* Holidays and Events
-* Oil Prices
+## 🖼️ Screenshots
 
-The training dataset contains approximately **3 million records** covering the period from **2013 to 2017**.
+<img width="1278" height="563" alt="image" src="https://github.com/user-attachments/assets/a006a27f-1ef0-4505-b2e8-02250a17da27" />
 
-## 🔄 Project Workflow
 
-1. Data Collection
-2. Data Cleaning
-3. Exploratory Data Analysis
-4. Daily Sales Aggregation
-5. Feature Engineering
-6. Chronological Train-Test Split
-7. Model Training
-8. Model Evaluation
-9. Future Sales Forecasting
-10. Streamlit Web Application
+## 🗂️ Project Structure
 
-## 📊 Exploratory Data Analysis
+```text
+Sales-Forecasting-System/
+├── Sales_Forecasting_System.ipynb
+├── app.py
+├── daily_sales.csv
+├── sales_forecasting_model.pkl
+├── train.csv.zip
+├── requirements.txt
+└── README.md
+```
 
-The project analyzes historical sales patterns through visualizations including:
+## 🚀 Getting Started
 
-* Daily sales trends
-* Monthly sales patterns
-* Seasonal sales behavior
-* Yearly sales patterns
-* Historical sales fluctuations
+### Prerequisites
 
-Visualizations were created using **Matplotlib** and **Seaborn** to better understand the behavior of sales over time.
+* Python 3.10+
+* pip
 
-## ⚙️ Feature Engineering
+### Installation
 
-The forecasting model uses the following time-based features:
+```bash
+# Clone the repository
+git clone https://github.com/manahilimran238-png/Sales-Forecasting-System.git
+cd Sales-Forecasting-System
 
-* **Year**
-* **Month**
-* **Day**
-* **Day of Week**
-* **Week of Year**
+# Install dependencies
+pip install -r requirements.txt
+```
 
-These features allow the model to identify patterns related to different dates, months, weekdays, and weeks of the year.
+### Usage
 
-## 🤖 Machine Learning Model
+Launch the Streamlit application:
 
-A **Random Forest Regressor** was used to predict daily sales.
+```bash
+streamlit run app.py
+```
 
-Model configuration:
+The application will open in your browser.
 
-* `n_estimators = 100`
-* `random_state = 42`
-* `n_jobs = -1`
+To explore the complete analysis and model development:
 
-The data was divided chronologically into training and testing sets to preserve the time-based nature of the forecasting problem.
+```text
+Sales_Forecasting_System.ipynb
+```
 
-### Training Period
+## 📊 Dataset
 
-**2013-01-31 to 2016-09-17**
+The project uses historical retail sales data containing information from multiple stores and product families.
 
-### Testing Period
+The dataset contains approximately **3 million records** covering **2013–2017**.
 
-**2016-09-18 to 2017-08-15**
+| Feature           | Description                          |
+| ----------------- | ------------------------------------ |
+| `Date`            | Sales date                           |
+| `Store`           | Store identifier                     |
+| `Product Family`  | Product category/family              |
+| `Sales`           | Daily sales value                    |
+| `Transactions`    | Number of transactions               |
+| Store Information | Additional store-related information |
+| Holidays & Events | Holiday and event information        |
+| Oil Prices        | Historical oil price information     |
 
-## 📏 Model Evaluation
+For forecasting, transaction-level sales are aggregated into daily sales totals and time-based features are extracted from the date.
 
-The model was evaluated using:
+## 🧠 Model Performance
 
-* Mean Absolute Error (MAE)
-* Root Mean Squared Error (RMSE)
+A **Random Forest Regressor** was used for daily sales forecasting.
 
-### Results
+### Model Configuration
 
-| Metric                    |     Result |
-| ------------------------- | ---------: |
-| MAE                       |  85,072.90 |
-| RMSE                      | 134,979.14 |
-| Average Actual Sales      | 850,957.98 |
-| MAE as % of Average Sales |     10.00% |
+| Parameter      | Value |
+| -------------- | ----: |
+| `n_estimators` |   100 |
+| `random_state` |    42 |
+| `n_jobs`       |    -1 |
 
-The model achieved an MAE equivalent to approximately **10% of the average daily sales**, providing a useful baseline for sales forecasting.
+A chronological train-test split was used to preserve the temporal structure of the data.
 
-## 🔮 Future Sales Forecast
+| Metric                     |     Result |
+| -------------------------- | ---------: |
+| MAE                        |  85,072.90 |
+| RMSE                       | 134,979.14 |
+| Average Actual Daily Sales | 850,957.98 |
+| MAE as % of Average Sales  |     10.00% |
 
-After evaluation, a final Random Forest model was trained using all available historical data.
+The model achieved an MAE equivalent to approximately **10% of average daily sales** on the test period.
 
-The model was then used to generate a **30-day future sales forecast**.
+### Key insight
 
-### 30-Day Forecast Results
+The forecasting model captures useful time-based sales patterns from historical data, providing a practical baseline for estimating future daily sales.
+
+## 🔮 Future Forecast
+
+The final Random Forest model was used to generate a **30-day future sales forecast**.
 
 | Forecast Metric               |         Value |
 | ----------------------------- | ------------: |
@@ -117,87 +136,24 @@ The model was then used to generate a **30-day future sales forecast**.
 | Lowest Predicted Daily Sales  |    649,985.15 |
 | Total Predicted Sales         | 24,712,411.46 |
 
-## 🌐 Streamlit Web Application
+The Streamlit application also supports **7-day, 14-day, and 30-day** forecast horizons.
 
-The project includes an interactive Streamlit application that allows users to generate future sales forecasts without running the complete Jupyter Notebook.
+## 🛠️ Tech Stack
 
-### Application Features
+`Python` · `Pandas` · `NumPy` · `Scikit-learn` · `Matplotlib` · `Seaborn` · `Streamlit` · `Joblib` · `Jupyter Notebook`
 
-* 📊 Historical sales visualization
-* 🔮 7-day, 14-day, and 30-day forecasting
-* 📈 Future sales forecast visualization
-* 📌 Forecast summary metrics
-* 📋 Detailed forecast table
-* ⬇️ Downloadable forecast CSV file
+## 🗺️ Roadmap / Possible Extensions
 
-## 🚀 Live Demo
+* [ ] Add lag and rolling-window features for improved temporal forecasting
+* [ ] Compare Random Forest with dedicated time-series models
+* [ ] Add store- and product-level forecasting
+* [ ] Add interactive date-range and store filters to the dashboard
+* [ ] Add automated forecast accuracy monitoring
+* [ ] Deploy the Streamlit application publicly
 
-The live Streamlit application will be available here:
+## 📄 License
 
-**[Sales Forecasting System – Live App](YOUR_STREAMLIT_APP_URL)**
+This project is licensed under the MIT License.
 
-> Replace `YOUR_STREAMLIT_APP_URL` with the Streamlit URL after deployment.
 
-## 🛠️ Technologies Used
-
-* Python
-* Pandas
-* NumPy
-* Matplotlib
-* Seaborn
-* Scikit-learn
-* Joblib
-* Streamlit
-* Google Colab
-* Jupyter Notebook
-
-## 📁 Project Structure
-
-```text
-Sales-Forecasting-System/
-│
-├── Sales_Forecasting_System.ipynb
-├── README.md
-├── train.csv.zip
-├── app.py
-├── daily_sales.csv
-├── sales_forecasting_model.pkl
-└── requirements.txt
-```
-
-## ▶️ Run the Streamlit App Locally
-
-### 1. Clone the repository
-
-```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-```
-
-### 2. Navigate to the project directory
-
-```bash
-cd Sales-Forecasting-System
-```
-
-### 3. Install the required libraries
-
-```bash
-pip install -r requirements.txt
-```
-
-### 4. Run the Streamlit application
-
-```bash
-streamlit run app.py
-```
-
-The application will open in your browser.
-
-## 📌 Key Outcome
-
-This project demonstrates an end-to-end machine learning workflow for sales forecasting, including:
-
-**Data Analysis → Feature Engineering → Model Training → Evaluation → Future Forecasting → Interactive Deployment**
-
-The Streamlit application makes the trained forecasting model accessible through a simple and user-friendly interface.
 
